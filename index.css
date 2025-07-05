@@ -1,0 +1,400 @@
+:root {
+  --primary-color: #1976d2;
+  --secondary-color: #5c6bc0;
+  --text-color: #212121;
+  --bg-color: #fff;
+  --card-bg: #f9f9f9;
+  --border-color: #e0e0e0;
+  --error-color: #d32f2f;
+  --success-color: #388e3c;
+  --transition: all 0.3s ease;
+  --theme-transition: none;
+  --accent-bg: rgba(25, 118, 210, 0.15);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --card-shadow: 0 2px 8px var(--shadow-color);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: var(--theme-transition);
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', 'Segoe UI', 'Oxygen', 'Ubuntu', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+  --primary-color: #64b5f6;
+  --secondary-color: #8c9eff;
+  --text-color: #f5f5f5;
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --border-color: #333;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --accent-bg: rgba(100, 181, 246, 0.25);
+  --card-shadow: 0 4px 15px var(--shadow-color);
+}
+
+/* Theme transition helper class */
+.theme-transition-active * {
+  transition: background-color 0.5s ease, 
+             color 0.5s ease, 
+             border-color 0.5s ease, 
+             box-shadow 0.5s ease,
+             transform 0.5s ease;
+}
+
+/* Theme-specific overrides */
+[data-theme-name="default"] {
+  --theme-hue: 210;
+}
+
+[data-theme-name="calm"] {
+  --theme-hue: 140;
+}
+
+[data-theme-name="sunset"] {
+  --theme-hue: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Cards and UI components */
+.card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px var(--shadow-color);
+}
+
+.auth-container {
+  max-width: 400px;
+  margin: 40px auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Buttons */
+.btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--accent-bg);
+}
+
+/* File upload */
+.file-upload {
+  border: 2px dashed var(--border-color);
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: var(--accent-bg);
+}
+
+.file-upload:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px var(--accent-bg);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease-in-out;
+}
+
+.pulse {
+  animation: pulse 1.5s infinite;
+}
+
+/* Responsive layout */
+@media (min-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Accessibility focus styles */
+:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+button:focus {
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+/* Status indicators */
+.error {
+  color: var(--error-color);
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.success {
+  color: var(--success-color);
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Loading indicators */
+.loading-spinner {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* File preview */
+.pdf-preview {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pdf-preview:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+/* Mobile optimizations */
+@media (max-width: 480px) {
+  .card {
+    padding: 15px;
+    border-radius: 10px;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: 12px 16px;
+  }
+  
+  h1, h2 {
+    font-size: 1.5rem;
+  }
+  
+  .container {
+    padding: 0 15px;
+  }
+}
+
+/* Dark mode specific overrides for MUI components */
+.dark-mode .MuiPaper-root {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+.dark-mode .MuiTypography-root {
+  color: var(--text-color);
+}
+
+.dark-mode .MuiInputBase-input {
+  color: var(--text-color);
+}
+
+.dark-mode .MuiInputLabel-root {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dark-mode .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.23);
+}
+
+.dark-mode .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-mode .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: var(--primary-color);
+  border-width: 2px;
+}
+
+.dark-mode .MuiFormHelperText-root {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.dark-mode .MuiIconButton-root {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dark-mode .MuiDivider-root {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.dark-mode .MuiTableCell-root {
+  color: var(--text-color);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+.dark-mode .MuiMenuItem-root:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark-mode .MuiTab-root.Mui-selected {
+  color: var(--primary-color);
+}
+
+/* Ensure buttons have proper colors */
+.MuiButton-containedPrimary {
+  background-color: var(--primary-color) !important;
+}
+
+.MuiButton-outlinedPrimary {
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+}
+
+.MuiButton-textPrimary {
+  color: var(--primary-color) !important;
+}
+
+.MuiCheckbox-colorPrimary.Mui-checked {
+  color: var(--primary-color) !important;
+}
+
+/* Enhanced scrollbar for dark mode */
+.dark-mode::-webkit-scrollbar {
+  width: 10px;
+}
+
+.dark-mode::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.dark-mode::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 6px;
+  border: 2px solid #1a1a1a;
+}
+
+.dark-mode::-webkit-scrollbar-thumb:hover {
+  background-color: #444;
+}
