@@ -2,7 +2,7 @@
 
 A responsive web application for patients to securely store and manage their health records. This application provides an intuitive interface for uploading, viewing, and organizing health documents.
 
-![Health Dashboard Preview](screenshots/dashboard.png)
+![Health Dashboard Preview](Screenshots/Dashboard.png)
 
 ## Features
 
@@ -72,10 +72,10 @@ For testing purposes, you can use the following credentials:
 
 ## Screenshots
 
-![Home Page](screenshots/home.png)
-![Login Page](screenshots/login.png)
-![Dashboard](screenshots/dashboard.png)
-![Mobile View](screenshots/mobile.png)
+![Home Page](./Screenshots/Home%20Page.png)
+![Login Page](./Screenshots/Login.png)
+![Dashboard](./Screenshots/Dashboard.png)
+![Dashboard Mobile](./Screenshots/Dashboard%20Mobile.png)
 
 ## Project Structure
 
